@@ -14,5 +14,13 @@ export default {
   music_bank: {
     type: 'audio',
     source: 'assets/sounds/Banks - Goodbye Machineryhead.mp3'
+  },
+  noise_radio: {
+    type: 'audio',
+    source: 'assets/sounds/noise.wav'
+  },
+  voice_russeau: {
+    type: 'audio',
+    source: 'assets/sounds/LOST-Rousseaus_distress_signal.mp3'
   }
 }
