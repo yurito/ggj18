@@ -20,8 +20,9 @@ export class Frequency {
     this.frequencyText.anchor.set(0.5, 0.5)
   }
 
-  public update (frequency) {
-    this.frequencyNumber = this.start + Math.ceil(frequency)
+  public update (angle) {
+    let frequency = Math.ceil(angle / 20)
+    this.frequencyNumber = this.start + frequency
     this.frequencyText.text = `0${this.frequencyNumber}.00`
   }
 

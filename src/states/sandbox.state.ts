@@ -35,18 +35,8 @@ export default class SandboxState extends Phaser.State {
   }
 
   private updateFrequency () {
-    let result
-
-    if (this.rotator.pivot.angle < 0) {
-      let angleHalf = this.rotator.pivot.angle + 180
-      result = angleHalf + 180
-    } else {
-      result = this.rotator.pivot.angle
-    }
-
-    result = result / 20
-
-    this.frequency.update(result)
+    let angle = this.rotator.getAngle()
+    this.frequency.update(angle)
   }
 
 }

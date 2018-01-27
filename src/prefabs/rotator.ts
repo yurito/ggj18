@@ -53,4 +53,13 @@ export class Rotator {
     this.pivot.rotation = rotation
   }
 
+  public getAngle () {
+    if (this.pivot.angle < 0) {
+      let angleHalf = this.pivot.angle + 180
+      return angleHalf + 180
+    } else {
+      return this.pivot.angle
+    }
+  }
+
 }
