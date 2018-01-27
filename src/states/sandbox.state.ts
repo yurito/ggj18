@@ -11,15 +11,16 @@ export default class SandboxState extends Phaser.State {
   private rotator
   private frequency: Frequency
   private voice1: Phaser.Sound
+  private noise: Phaser.Sound
   private isPlaying = false
 
-  public init (data, params) {
+  public init(data, params) {
     this.data = data
     this.params = params
     // this.game.stage.backgroundColor = 0x776655
   }
 
-  public create () {
+  public create() {
     const centerX = this.game.world.centerX
     const centerY = this.game.world.centerY
 
@@ -32,14 +33,15 @@ export default class SandboxState extends Phaser.State {
     this.rotator.slider.events.onDragUpdate.add(this.updateFrequency, this);
 
     this.voice1 = this.game.add.audio('music_bank', 0.0)
+    this.noise = this.game.add.audio('noise_radio', 1.0, true)
     // this.voice1.play()
   }
 
-  public update () {
+  public update() {
     this.rotator.update()
   }
 
-  private updateFrequency () {
+  private updateFrequency() {
     let angle = this.rotator.getAngle()
     this.frequency.update(angle)
     let signalFound = false
@@ -51,6 +53,10 @@ export default class SandboxState extends Phaser.State {
       if (!this.isPlaying) {
         this.voice1.play()
         this.isPlaying = true
+        if (this.noise.isPlaying) {
+          this.noise.stop()
+        }
+
       }
 
       if (frequencyValue === 100.10) {
@@ -63,11 +69,14 @@ export default class SandboxState extends Phaser.State {
     if (!signalFound) {
       this.voice1.stop()
       this.isPlaying = false
+      if (!this.noise.isPlaying) {
+        this.noise.play()
+      }
     }
 
   }
 
-  private playSound (sound) {
+  private playSound(sound) {
 
   }
 

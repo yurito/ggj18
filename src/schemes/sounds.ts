@@ -14,5 +14,9 @@ export default {
   music_bank: {
     type: 'audio',
     source: 'assets/sounds/Banks - Goodbye Machineryhead.mp3'
+  },
+  noise_radio: {
+    type: 'audio',
+    source: 'assets/sounds/noise.wav'
   }
 }
