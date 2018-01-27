@@ -7,6 +7,6 @@ export default {
     nextLevel: 1
   },
   sound: {
-    active: false
+    active: true
   }
 }

@@ -21,9 +21,9 @@ export default class LoadingState extends Phaser.State {
   public create () {
     this.loadAssets(backgrounds)
     this.loadAssets(buttons)
-    // this.loadAssets(characters)
-    // this.loadAssets(sounds)
-    // this.loadAssets(tiles)
+    this.loadAssets(characters)
+    this.loadAssets(sounds)
+    this.loadAssets(tiles)
     this.setProgress()
   }
 
