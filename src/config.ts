@@ -3,10 +3,10 @@ export default {
     delay: 0
   },
   level: {
-    firstState: 'sandbox',
+    firstState: 'interface',
     nextLevel: 1
   },
   sound: {
-    active: true
+    active: false
   }
 }

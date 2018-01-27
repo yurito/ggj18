@@ -1,6 +1,7 @@
 import 'phaser-ce'
 import backgrounds from '../schemes/backgrounds'
 import buttons from '../schemes/buttons'
+import hud from "../schemes/hud"
 import characters from '../schemes/characters'
 import sounds from '../schemes/sounds'
 import { tiles } from '../schemes/tiles'
@@ -12,22 +13,23 @@ export default class LoadingState extends Phaser.State {
   private params
   private progressText
 
-  public init (nextState, params) {
+  public init(nextState, params) {
     this.nextState = nextState
     this.params = params
     this.game.stage.backgroundColor = 0xffffff
   }
 
-  public create () {
+  public create() {
     this.loadAssets(backgrounds)
     this.loadAssets(buttons)
     this.loadAssets(characters)
     this.loadAssets(sounds)
     this.loadAssets(tiles)
+    this.loadAssets(hud)
     this.setProgress()
   }
 
-  private loadAssets (assets) {
+  private loadAssets(assets) {
     for (let assetKey in assets) {
       if (assets.hasOwnProperty(assetKey)) {
         let asset = assets[assetKey];
@@ -53,7 +55,7 @@ export default class LoadingState extends Phaser.State {
     }
   }
 
-  private setProgress () {
+  private setProgress() {
     this.progressText = this.game.add.text(this.game.world.centerX - 30, this.game.world.centerY, '0%', { fill: '#000000' })
 
     this.game.time.events.add(Phaser.Timer.SECOND * config.loading.delay, () => {
@@ -63,11 +65,11 @@ export default class LoadingState extends Phaser.State {
     }, this);
   }
 
-  private loadProgress (progress, cacheKey, success, totalLoaded, totalFiles) {
+  private loadProgress(progress, cacheKey, success, totalLoaded, totalFiles) {
     this.progressText.setText(progress + "%")
   }
 
-  private loadComplete () {
+  private loadComplete() {
     this.game.time.events.add(Phaser.Timer.SECOND * config.loading.delay, () => {
       this.game.state.start(this.nextState, true, false, this.params)
     }, this)

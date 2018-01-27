@@ -12,20 +12,17 @@ export class Frequency {
   public minor
   public value
 
-  constructor(game, panelBox) {
+  constructor(game, x, y) {
     this.game = game
-    this.panelBox = panelBox
-
     const centerX = this.game.world.centerX
     const centerY = this.game.world.centerY
 
-    this.frequencyText = this.game.add.text(centerX, this.panelBox.y + 5, `${this.start}.00`, { font: '24px Arial', fill: '#ff0088' })
+    this.frequencyText = this.game.add.text(x, y + 5, `${this.start}.00`, { font: '24px Arial', fill: '#ff0088' })
 
-    this.panelBox.anchor.set(0.5, 0.5)
     this.frequencyText.anchor.set(0.5, 0.5)
   }
 
-  public update (angle) {
+  public update(angle) {
     let subfrequency = angle / 30
     let frequency = Math.ceil(subfrequency)
     let subfrequencyAdjusted = subfrequency % 1

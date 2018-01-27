@@ -27,38 +27,39 @@ export class Rotator {
     }, this);
   }
 
-  public update () {
+  public update() {
     if (!this.isDragging) {
       const midX = this.pivot.width / 2;
       const midY = this.pivot.height / 2;
       this.slider.x = this.pivot.x;
       this.slider.y = this.pivot.y;
-      this.slider.pivot.y = midY + 30;
+      this.slider.pivot.y = midY - 23;
     }
   }
 
-  private onDragStart () {
+  private onDragStart() {
     this.isDragging = true
   }
 
-  private onDragStop () {
+  private onDragStop() {
     this.isDragging = false
   }
 
-  private onRotateDragUpdate () {
+  private onRotateDragUpdate() {
     this.slider.x = this.pivot.x;
     this.slider.y = this.pivot.y;
     let rotation = this.game.input.activePointer.position.angle(this.slider.position) - Phaser.Math.degToRad(90);
     this.slider.rotation = rotation
     this.pivot.rotation = rotation
+
   }
 
-  public getAngle () {
-    if (this.pivot.angle < 0) {
-      let angleHalf = this.pivot.angle + 180
+  public getAngle() {
+    if (this.slider.angle < 0) {
+      let angleHalf = this.slider.angle + 180
       return angleHalf + 180
     } else {
-      return this.pivot.angle
+      return this.slider.angle
     }
   }
 

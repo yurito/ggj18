@@ -1,8 +1,4 @@
 export default {
-  sound_voice1: {
-    type: 'audio',
-    source: 'assets/sounds/voice1.mpeg'
-  },
   sound_coin: {
     type: 'audio',
     source: 'assets/sounds/coin.wav'
