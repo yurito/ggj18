@@ -19,7 +19,7 @@ export class Frequency {
     const centerX = this.game.world.centerX
     const centerY = this.game.world.centerY
 
-    this.frequencyText = this.game.add.text(centerX, centerY - 95, `${this.start}.00`, { font: '24px Arial', fill: '#ff0088' })
+    this.frequencyText = this.game.add.text(centerX, this.panelBox.y + 5, `${this.start}.00`, { font: '24px Arial', fill: '#ff0088' })
 
     this.panelBox.anchor.set(0.5, 0.5)
     this.frequencyText.anchor.set(0.5, 0.5)

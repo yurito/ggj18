@@ -28,7 +28,7 @@ export default class SandboxState extends Phaser.State {
     const centerX = this.game.world.centerX
     const centerY = this.game.world.centerY
 
-    let panelBox = this.game.add.sprite(centerX, centerY - 100, 'button_frequency')
+    let panelBox = this.game.add.sprite(centerX, centerY - 110, 'button_frequency')
     this.frequency = new Frequency(this.game, panelBox)
 
     let radioButton = this.game.add.sprite(centerX, centerY, 'button_radio')
@@ -49,8 +49,6 @@ export default class SandboxState extends Phaser.State {
       let signal = this.createSignal()
       this.voices.push(new Voice(sound, signal))
     })
-
-    console.log(this.signals)
 
     // this.voices.push(new Voice(this.voice1, 100.10))
     // this.voices.push(new Voice(this.voice2, 98.50))
