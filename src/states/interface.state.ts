@@ -4,7 +4,9 @@ import { Math as MathCE } from 'phaser-ce'
 import { Rotator } from '../prefabs/rotator'
 import { HUD } from '../prefabs/hud'
 import { Frequency } from '../prefabs/frequency'
+import { voiceFactory } from '../prefabs/voice.factory'
 import { Voice } from '../prefabs/voice'
+import { Pause } from '../prefabs/pause'
 
 export default class InterfaceState extends Phaser.State {
 
@@ -44,16 +46,14 @@ export default class InterfaceState extends Phaser.State {
     this.noise.volume = 0.5
     this.noise.play()
 
-    let sound1 = this.game.add.audio('music_bank', 0.0)
-    let sound2 = this.game.add.audio('sound_sonar', 0.0)
-    let sound3 = this.game.add.audio('voice_russeau', 0.0)
-
-    this.sounds = [sound1, sound2, sound3, sound1, sound2, sound3, sound1, sound2, sound3]
+    this.sounds = voiceFactory(this.game)
     this.sounds.forEach((sound) => {
       let signalObject = this.frequency.createSignal(this.signals)
       this.signals.push(signalObject.major)
       this.voices.push(new Voice(sound, signalObject))
     })
+
+    let pause = new Pause(this.game)
   }
 
   public update () {
@@ -84,7 +84,7 @@ export default class InterfaceState extends Phaser.State {
           console.log('found')
           voice.sound.volume = 1
           this.noise.volume = 0
-          this.warnings.green.blink = false
+          this.warnings.green.blink = true
           this.warnings.yellow.blink = false
         } else {
           console.log('almost')

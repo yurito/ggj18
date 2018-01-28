@@ -7,7 +7,7 @@ export class Frequency {
   public panelBox: Phaser.Sprite
   public frequencyText: Phaser.Text
 
-  public start = 97
+  public start = 92
   public major
   public minor
   public value

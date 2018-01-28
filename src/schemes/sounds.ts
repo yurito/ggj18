@@ -18,5 +18,21 @@ export default {
   voice_russeau: {
     type: 'audio',
     source: 'assets/sounds/LOST-Rousseaus_distress_signal.mp3'
+  },
+  voice_segunda: {
+    type: 'audio',
+    source: 'assets/sounds/SegundaFeira.mp3'
+  },
+  voice_terca: {
+    type: 'audio',
+    source: 'assets/sounds/TerçaFeira.mp3'
+  },
+  voice_quarta: {
+    type: 'audio',
+    source: 'assets/sounds/QuartaFeira.mp3'
+  },
+  voice_pentakill: {
+    type: 'audio',
+    source: 'assets/sounds/PentaKillRobo.mp3'
   }
 }
