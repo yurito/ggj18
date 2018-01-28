@@ -12,7 +12,15 @@ export class HUD {
   constructor(game) {
     this.game = game
 
+    this.createWater()
+    this.game.add.sprite(0, 0, 'background_cabin')
     this.panel = this.game.add.sprite(100, 350, 'hud')
+  }
+
+  private createWater () {
+    let water = this.game.add.sprite(0, -170, 'agua')
+    water.animations.add('flow', ['agua-1', 'agua-2', 'agua-3'], 1.5, true)
+    water.animations.play('flow')
   }
 
   public createFrequency () {

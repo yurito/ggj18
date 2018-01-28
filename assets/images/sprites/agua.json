@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "agua-1",
+	"frame": {"x":0,"y":0,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+},
+{
+	"filename": "agua-2",
+	"frame": {"x":0,"y":600,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+},
+{
+	"filename": "agua-3",
+	"frame": {"x":0,"y":1200,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "agua.png",
+	"format": "RGBA8888",
+	"size": {"w":800,"h":1800},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:73ee9e7dd9aa4b7596f41c65585fcf18:01fe2a4d0fd7ff57cf03a934e26862d7:41b0a0f65ba7da19a4e52cb715b0efb0$"
+}
+}

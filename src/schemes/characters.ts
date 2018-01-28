@@ -8,5 +8,10 @@ export default {
     type: 'atlasJSONArray',
     source: 'assets/images/sprites/panel-sprites.png',
     texture: 'assets/images/sprites/panel-sprites.json'
+  },
+  agua: {
+    type: 'atlasJSONArray',
+    source: 'assets/images/sprites/agua.png',
+    texture: 'assets/images/sprites/agua.json'
   }
 }

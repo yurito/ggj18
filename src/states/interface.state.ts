@@ -35,8 +35,6 @@ export default class InterfaceState extends Phaser.State {
     const centerX = this.game.world.centerX
     const centerY = this.game.world.centerY
 
-    this.game.add.sprite(0, 0, 'background_cabin')
-
     let hud = new HUD(this.game)
     this.frequency = hud.createFrequency()
     let radioButton = hud.createButtonRadio()
