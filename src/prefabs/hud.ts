@@ -18,7 +18,7 @@ export class HUD {
   }
 
   public createButtonRadio () {
-    return this.game.add.sprite(this.panel.centerX, this.panel.centerY + 15, 'button_radio')
+    return this.game.add.sprite(this.panel.centerX, this.panel.centerY + 35, 'button_radio')
   }
 
   public createSlider () {
@@ -26,10 +26,17 @@ export class HUD {
   }
 
   public createWarnings () {
-    let green = this.game.add.sprite(this.panel.x + 100, this.panel.y + 100, 'button_warning_green')
-    let yellow = this.game.add.sprite(this.panel.x + 120, this.panel.y + 100, 'button_warning_yellow')
-    let red = this.game.add.sprite(this.panel.x + 140, this.panel.y + 100, 'button_warning_red')
+    let green = this.game.add.sprite(this.panel.x + 160, this.panel.y + 95, 'panel_sprites', 'botao-verdinho')
+    green.animations.add('blink', ['botao-verdinho', 'botao-verdinho-brilhando'], 2)
+    let yellow = this.game.add.sprite(this.panel.x + 180, this.panel.y + 95, 'panel_sprites', 'botao-amarelinho')
+    yellow.animations.add('blink', ['botao-amarelinho', 'botao-amarelinho-brilhando'], 2)
+    let red = this.game.add.sprite(this.panel.x + 200, this.panel.y + 95, 'panel_sprites', 'botao-vermelhinho')
+    red.animations.add('blink', ['botao-vermelhinho', 'botao-vermelhinho-brilhando'], 2)
     return { green, yellow, red }
+  }
+
+  public createRedAllert () {
+    return this.game.add.sprite(this.panel.x + 20, this.panel.y + 15, 'panel_sprites', 'botao-vermelho')
   }
 
 }

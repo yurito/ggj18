@@ -17,6 +17,7 @@ export default class InterfaceState extends Phaser.State {
   private frequency: Frequency
   private sounds: Array<any>
   private noise: Phaser.Sound
+  private redAlert: Phaser.Sprite
   private voices = []
   private signals = []
   private warnings
@@ -36,6 +37,10 @@ export default class InterfaceState extends Phaser.State {
     let radioButton = hud.createButtonRadio()
     let slider = hud.createSlider()
     this.warnings = hud.createWarnings()
+    this.redAlert = hud.createRedAllert()
+    this.redAlert.inputEnabled = true
+
+    this.redAlert.events.onInputDown.add(this.pressRedAlert, this)
 
     this.game.time.events.loop(700, this.blinkWarning, this)
 
@@ -54,10 +59,15 @@ export default class InterfaceState extends Phaser.State {
     })
 
     let pause = new Pause(this.game)
+
   }
 
   public update () {
     this.rotator.update()
+  }
+
+  private pressRedAlert () {
+    // this.redAlert.frame = this.redAlert.frame === 1 ? 0 : 1
   }
 
   private updateFrequency () {
@@ -113,14 +123,10 @@ export default class InterfaceState extends Phaser.State {
     for (let warningKey in this.warnings) {
       if (this.warnings.hasOwnProperty(warningKey)) {
         let warning = this.warnings[warningKey]
-        if (warning.blink) {
-          if (warning.alpha) {
-            warning.alpha = 0;
-          } else {
-            warning.alpha = 1;
-          }
+        if (warning.blink && warning.animations.currentAnim !== 'blink') {
+          warning.animations.play('blink')
         } else {
-          warning.alpha = 1;
+          warning.animations.stop(null, true);
         }
       }
     }
