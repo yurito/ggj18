@@ -3,7 +3,7 @@ export default {
     delay: 0.5
   },
   level: {
-    firstState: 'interface',
+    firstState: 'title',
     nextLevel: 1
   },
   sound: {

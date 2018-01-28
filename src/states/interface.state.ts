@@ -64,7 +64,6 @@ export default class InterfaceState extends Phaser.State {
     this.fader.fadeOut(2200)
 
     console.log(this.voices)
-
   }
 
   public update () {
@@ -72,17 +71,23 @@ export default class InterfaceState extends Phaser.State {
   }
 
   private loseOrWin () {
+
     if (this.actualVoice && this.actualVoice.sound.key === this.levels[this.actualLevel - 1]) {
       this.params.nextLevel += 1
       this.game.sound.stopAll()
-      this.game.state.start('interface', true, false, this.params)
+      if (this.actualLevel < 3) {
+        this.game.state.start('interface', true, false, this.params)
+      } else {
+        this.game.state.start('end', true, false, this.params)
+        this.game.paused = true
+        this.game.add.sprite(0, 0, 'background_end')
+      }
     } else {
       this.game.camera.shake(0.001, 1000)
       if (!this.missSound.isPlaying) {
         this.missSound.play()
       }
     }
-
   }
 
   private updateFrequency () {

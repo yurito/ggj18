@@ -5,7 +5,9 @@ import 'phaser'
 import BootState from './states/boot.state'
 import LoadingState from './states/loading.state'
 import SandboxState from './states/sandbox.state'
+import TitleState from './states/title.state'
 import InterfaceState from './states/interface.state'
+import EndState from './states/end.state'
 
 
 class App extends Phaser.Game {
@@ -15,13 +17,15 @@ class App extends Phaser.Game {
     this.state.add('boot', BootState)
     this.state.add('loading', LoadingState)
     this.state.add('sandbox', SandboxState)
+    this.state.add('title', TitleState)
     this.state.add('interface', InterfaceState)
+    this.state.add('end', EndState)
     this.state.start('boot')
   }
 
 }
 
-function startApp(): void {
+function startApp (): void {
 
   let gameWidth: number = 800;
   let gameHeight: number = 600;

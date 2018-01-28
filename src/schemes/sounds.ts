@@ -1,23 +1,35 @@
 export default {
-  sound_coin: {
-    type: 'audio',
-    source: 'assets/sounds/coin.wav'
-  },
   sound_sonar: {
     type: 'audio',
     source: 'assets/sounds/Sonar.mp3'
-  },
-  music_bank: {
-    type: 'audio',
-    source: 'assets/sounds/Banks - Goodbye Machineryhead.mp3'
   },
   music_survive: {
     type: 'audio',
     source: 'assets/sounds/iwillsurvive.mp3'
   },
+  music_portal: {
+    type: 'audio',
+    source: 'assets/sounds/Portal.mp3'
+  },
+  music_hp: {
+    type: 'audio',
+    source: 'assets/sounds/HarryPortter.mp3'
+  },
+  music_massacre: {
+    type: 'audio',
+    source: 'assets/sounds/Massacration.mp3'
+  },
+  music_vitas: {
+    type: 'audio',
+    source: 'assets/sounds/DancingVitas.mp3'
+  },
   noise_radio: {
     type: 'audio',
     source: 'assets/sounds/noise.wav'
+  },
+  voice_pentakill: {
+    type: 'audio',
+    source: 'assets/sounds/PentaKillRobo.mp3'
   },
   sound_miss: {
     type: 'audio',
@@ -43,20 +55,16 @@ export default {
     type: 'audio',
     source: 'assets/sounds/QuartaFeira.mp3'
   },
-  voice_pentakill: {
-    type: 'audio',
-    source: 'assets/sounds/PentaKillRobo.mp3'
-  },
   voice_level1: {
     type: 'audio',
-    source: 'assets/sounds/Baleias.mp3'
+    source: 'assets/sounds/PescaIlegal.mp3'
   },
   voice_level2: {
     type: 'audio',
-    source: 'assets/sounds/Piratas.mp3'
+    source: 'assets/sounds/Baleias.mp3'
   },
   voice_level3: {
     type: 'audio',
-    source: 'assets/sounds/PescaIlegal.mp3'
+    source: 'assets/sounds/Piratas.mp3'
   }
 }

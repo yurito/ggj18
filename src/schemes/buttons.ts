@@ -18,5 +18,9 @@ export default {
   button_warning_yellow: {
     type: 'image',
     source: 'assets/images/buttons/botao-amarelinho.png'
+  },
+  button_start: {
+    type: 'image',
+    source: 'assets/images/buttons/iniciar.png'
   }
 }
