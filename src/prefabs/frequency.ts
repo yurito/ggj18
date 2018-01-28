@@ -22,7 +22,7 @@ export class Frequency {
     this.frequencyText.anchor.set(0.5, 0.5)
   }
 
-  public update(angle) {
+  public update (angle) {
     let subfrequency = angle / 30
     let frequency = Math.ceil(subfrequency)
     let subfrequencyAdjusted = subfrequency % 1
@@ -32,6 +32,26 @@ export class Frequency {
     this.minor = parseInt(decimals, 10)
     this.value = parseFloat(`${this.major}.${decimals}`).toFixed(2)
     this.frequencyText.text = `${this.value}`
+  }
+
+  public createSignal (signals) {
+    let major = parseInt(MathCE.random(1, 12).toString(), 10) + this.start
+    let minor = parseInt(MathCE.random(3, 7).toString(), 10) * 10
+    let signal = parseFloat(`${major}.${minor}`)
+
+    let duplicated = false
+
+    signals.forEach((item) => {
+      if (item === major) {
+        duplicated = true
+      }
+    })
+
+    if (duplicated) {
+      return this.createSignal(signals)
+    } else {
+      return { signal, major }
+    }
   }
 
 }
