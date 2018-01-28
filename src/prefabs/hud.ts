@@ -14,7 +14,7 @@ export class HUD {
 
     this.createWater()
     this.game.add.sprite(0, 0, 'background_cabin')
-    this.panel = this.game.add.sprite(100, 350, 'hud')
+    this.panel = this.game.add.sprite(100, 349, 'hud')
   }
 
   private createWater () {
@@ -37,7 +37,7 @@ export class HUD {
 
   public createWarnings () {
     let green = this.game.add.sprite(this.panel.centerX - 30, this.panel.y + 85, 'panel_sprites', 'botao-verdinho')
-    green.animations.add('blink', ['botao-verdinho', 'botao-verdinho-brilhando'], 3)
+    green.animations.add('blink', ['botao-verdinho', 'botao-verdinho-brilhando'], 6)
     let yellow = this.game.add.sprite(this.panel.centerX - 10, this.panel.y + 85, 'panel_sprites', 'botao-amarelinho')
     yellow.animations.add('blink', ['botao-amarelinho', 'botao-amarelinho-brilhando'], 2.5)
     let red = this.game.add.sprite(this.panel.centerX + 10, this.panel.y + 85, 'panel_sprites', 'botao-vermelhinho')

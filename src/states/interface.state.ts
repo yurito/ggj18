@@ -25,6 +25,7 @@ export default class InterfaceState extends Phaser.State {
   private warnings
   private fader: Fader
   private actualVoice
+  private missSound
 
   public init (params) {
     this.params = params
@@ -50,12 +51,14 @@ export default class InterfaceState extends Phaser.State {
     this.noise.volume = 0.0
     this.noise.play()
 
-    let factored = voiceFactory(this.game, this.frequency)
+    let factored = voiceFactory(this.game, this.frequency, this.actualLevel)
     this.voices = factored.voices
     this.signals = factored.signals
     this.levels = factored.levels
     console.log(this.voices)
     this.game.add.text(100, 50, this.levels[this.actualLevel - 1], { font: '24px Arial', fill: '#000' })
+
+    this.missSound = this.game.add.audio('sound_miss')
 
     let pause = new Pause(this.game)
 
@@ -68,12 +71,15 @@ export default class InterfaceState extends Phaser.State {
   }
 
   private loseOrWin () {
-    console.log(this.actualVoice)
-    if (this.actualVoice.sound.key === this.levels[this.actualLevel - 1]) {
+    if (this.actualVoice && this.actualVoice.sound.key === this.levels[this.actualLevel - 1]) {
       this.params.nextLevel += 1
+      this.game.sound.stopAll()
       this.game.state.start('interface', true, false, this.params)
     } else {
       this.game.camera.shake(0.001, 1000)
+      if (!this.missSound.isPlaying) {
+        this.missSound.play()
+      }
     }
 
   }
@@ -99,7 +105,7 @@ export default class InterfaceState extends Phaser.State {
           voice.sound.play()
         }
 
-        if (frequencyValue >= voice.interlude.signal - 0.01 && frequencyValue <= voice.interlude.signal + 0.01) {
+        if (frequencyValue >= voice.interlude.signal - 0.02 && frequencyValue <= voice.interlude.signal + 0.02) {
           voice.sound.volume = 1
           this.noise.volume = 0
           this.warnings.green.blink = true

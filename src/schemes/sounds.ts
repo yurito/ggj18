@@ -19,6 +19,10 @@ export default {
     type: 'audio',
     source: 'assets/sounds/noise.wav'
   },
+  sound_miss: {
+    type: 'audio',
+    source: 'assets/sounds/errou.wav'
+  },
   voice_russeau: {
     type: 'audio',
     source: 'assets/sounds/LOST-Rousseaus_distress_signal.mp3'
@@ -27,20 +31,32 @@ export default {
     type: 'audio',
     source: 'assets/sounds/Karuta.mp3'
   },
-  voice_level1: {
+  voice_radio_level1: {
     type: 'audio',
     source: 'assets/sounds/SegundaFeira.mp3'
   },
-  voice_level2: {
+  voice_radio_level2: {
     type: 'audio',
     source: 'assets/sounds/TerçaFeira.mp3'
   },
-  voice_level3: {
+  voice_radio_level3: {
     type: 'audio',
     source: 'assets/sounds/QuartaFeira.mp3'
   },
   voice_pentakill: {
     type: 'audio',
     source: 'assets/sounds/PentaKillRobo.mp3'
+  },
+  voice_level1: {
+    type: 'audio',
+    source: 'assets/sounds/Baleias.mp3'
+  },
+  voice_level2: {
+    type: 'audio',
+    source: 'assets/sounds/Piratas.mp3'
+  },
+  voice_level3: {
+    type: 'audio',
+    source: 'assets/sounds/PescaIlegal.mp3'
   }
 }
