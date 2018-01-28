@@ -7,6 +7,7 @@ export class HUD {
   private game: Phaser.Game
   private panel: Phaser.Sprite
   private warnings
+  private redAlert
 
   constructor(game) {
     this.game = game
@@ -41,8 +42,11 @@ export class HUD {
 
   public createRedAllert () {
     let button = this.game.add.sprite(this.panel.x + 20, this.panel.y + 15, 'panel_sprites', 'botao-vermelho')
-    button.animations.add('pressed', ['botao-vermelho-apertado'])
-    button.animations.add('unpressed', ['botao-vermelho'])
+    button.animations.add('pressed', ['botao-vermelho-apertado', 'botao-vermelho'], 2, false)
+    button.animations.add('idle', ['botao-vermelho'])
+    this.redAlert = button
+    this.redAlert.inputEnabled = true
+    this.redAlert.events.onInputDown.add(this.pressRedAlert, this)
     return button
   }
 
@@ -59,6 +63,11 @@ export class HUD {
       }
     }
 
+  }
+
+  private pressRedAlert () {
+    this.redAlert.animations.play('pressed')
+    this.game.camera.shake(0.001, 1000)
   }
 
 }

@@ -38,9 +38,6 @@ export default class InterfaceState extends Phaser.State {
     let slider = hud.createSlider()
     this.warnings = hud.createWarnings()
     this.redAlert = hud.createRedAllert()
-    this.redAlert.inputEnabled = true
-
-    this.redAlert.events.onInputDown.add(this.pressRedAlert, this)
 
     this.rotator = new Rotator(this.game, radioButton, slider)
     this.rotator.slider.events.onDragUpdate.add(this.updateFrequency, this)
@@ -49,23 +46,15 @@ export default class InterfaceState extends Phaser.State {
     this.noise.volume = 0.5
     this.noise.play()
 
-    this.sounds = voiceFactory(this.game)
-    this.sounds.forEach((sound) => {
-      let signalObject = this.frequency.createSignal(this.signals)
-      this.signals.push(signalObject.major)
-      this.voices.push(new Voice(sound, signalObject))
-    })
+    let factored = voiceFactory(this.game, this.frequency)
+    this.voices = factored.voices
+    this.signals = factored.signals
 
     let pause = new Pause(this.game)
-
   }
 
   public update () {
     this.rotator.update()
-  }
-
-  private pressRedAlert () {
-    this.redAlert.animations.play('pressed')
   }
 
   private updateFrequency () {
@@ -89,13 +78,11 @@ export default class InterfaceState extends Phaser.State {
         }
 
         if (frequencyValue >= voice.interlude.signal - 0.01 && frequencyValue <= voice.interlude.signal + 0.01) {
-          console.log('found')
           voice.sound.volume = 1
           this.noise.volume = 0
           this.warnings.green.blink = true
           this.warnings.yellow.blink = false
         } else {
-          console.log('almost')
           voice.sound.volume = 0.2
           this.noise.volume = 0.5
         }
