@@ -16,11 +16,11 @@ export class HUD {
   }
 
   public createFrequency () {
-    return new Frequency(this.game, this.panel.position.x + 296, this.panel.position.y + 53)
+    return new Frequency(this.game, this.panel.position.x + 305, this.panel.position.y + 53)
   }
 
   public createButtonRadio () {
-    return this.game.add.sprite(this.panel.centerX, this.panel.centerY + 35, 'button_radio')
+    return this.game.add.sprite(this.panel.centerX, this.panel.centerY + 50, 'button_radio')
   }
 
   public createSlider () {
@@ -28,11 +28,11 @@ export class HUD {
   }
 
   public createWarnings () {
-    let green = this.game.add.sprite(this.panel.x + 160, this.panel.y + 95, 'panel_sprites', 'botao-verdinho')
-    green.animations.add('blink', ['botao-verdinho', 'botao-verdinho-brilhando'], 2)
-    let yellow = this.game.add.sprite(this.panel.x + 180, this.panel.y + 95, 'panel_sprites', 'botao-amarelinho')
-    yellow.animations.add('blink', ['botao-amarelinho', 'botao-amarelinho-brilhando'], 2)
-    let red = this.game.add.sprite(this.panel.x + 200, this.panel.y + 95, 'panel_sprites', 'botao-vermelhinho')
+    let green = this.game.add.sprite(this.panel.centerX - 30, this.panel.y + 85, 'panel_sprites', 'botao-verdinho')
+    green.animations.add('blink', ['botao-verdinho', 'botao-verdinho-brilhando'], 3)
+    let yellow = this.game.add.sprite(this.panel.centerX - 10, this.panel.y + 85, 'panel_sprites', 'botao-amarelinho')
+    yellow.animations.add('blink', ['botao-amarelinho', 'botao-amarelinho-brilhando'], 2.5)
+    let red = this.game.add.sprite(this.panel.centerX + 10, this.panel.y + 85, 'panel_sprites', 'botao-vermelhinho')
     red.animations.add('blink', ['botao-vermelhinho', 'botao-vermelhinho-brilhando'], 2)
 
     this.warnings = { green, yellow, red }
@@ -41,7 +41,7 @@ export class HUD {
   }
 
   public createRedAllert () {
-    let button = this.game.add.sprite(this.panel.x + 20, this.panel.y + 15, 'panel_sprites', 'botao-vermelho')
+    let button = this.game.add.sprite(this.panel.x + 10, this.panel.y + 12, 'panel_sprites', 'botao-vermelho')
     button.animations.add('pressed', ['botao-vermelho-apertado', 'botao-vermelho'], 2, false)
     button.animations.add('idle', ['botao-vermelho'])
     this.redAlert = button
@@ -67,7 +67,6 @@ export class HUD {
 
   private pressRedAlert () {
     this.redAlert.animations.play('pressed')
-    this.game.camera.shake(0.001, 1000)
   }
 
 }

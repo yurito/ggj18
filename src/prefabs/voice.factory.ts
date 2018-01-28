@@ -1,6 +1,6 @@
 import { Voice } from './voice'
 
-export function voiceFactory (game, frequency) {
+export function voiceFactory (game: Phaser.Game, frequency) {
 
   let sounds = []
   let voices = []
@@ -8,11 +8,19 @@ export function voiceFactory (game, frequency) {
 
   let keys = [
     'music_bank',
+    'music_survive',
     'sound_sonar',
     'voice_russeau',
-    'voice_segunda',
-    'voice_terca',
-    'voice_quarta'
+    'voice_karuta',
+    'voice_level1',
+    'voice_level2',
+    'voice_level3'
+  ]
+
+  let levels = [
+    'sound_sonar',
+    'music_bank',
+    'voice_russeau'
   ]
 
   keys.forEach((key) => {
@@ -29,5 +37,5 @@ export function voiceFactory (game, frequency) {
     voices.push(new Voice(sound, signalObject))
   })
 
-  return { voices, signals }
+  return { voices, signals, levels }
 }

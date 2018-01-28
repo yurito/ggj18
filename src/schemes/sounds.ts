@@ -11,6 +11,10 @@ export default {
     type: 'audio',
     source: 'assets/sounds/Banks - Goodbye Machineryhead.mp3'
   },
+  music_survive: {
+    type: 'audio',
+    source: 'assets/sounds/iwillsurvive.mp3'
+  },
   noise_radio: {
     type: 'audio',
     source: 'assets/sounds/noise.wav'
@@ -19,15 +23,19 @@ export default {
     type: 'audio',
     source: 'assets/sounds/LOST-Rousseaus_distress_signal.mp3'
   },
-  voice_segunda: {
+  voice_karuta: {
+    type: 'audio',
+    source: 'assets/sounds/Karuta.mp3'
+  },
+  voice_level1: {
     type: 'audio',
     source: 'assets/sounds/SegundaFeira.mp3'
   },
-  voice_terca: {
+  voice_level2: {
     type: 'audio',
     source: 'assets/sounds/TerçaFeira.mp3'
   },
-  voice_quarta: {
+  voice_level3: {
     type: 'audio',
     source: 'assets/sounds/QuartaFeira.mp3'
   },

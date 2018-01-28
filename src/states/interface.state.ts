@@ -7,11 +7,12 @@ import { Frequency } from '../prefabs/frequency'
 import { voiceFactory } from '../prefabs/voice.factory'
 import { Voice } from '../prefabs/voice'
 import { Pause } from '../prefabs/pause'
+import { Fader } from '../prefabs/fader'
 
 export default class InterfaceState extends Phaser.State {
 
-  private data
   private params
+  private actualLevel
 
   private rotator
   private frequency: Frequency
@@ -19,18 +20,22 @@ export default class InterfaceState extends Phaser.State {
   private noise: Phaser.Sound
   private redAlert: Phaser.Sprite
   private voices = []
+  private levels = []
   private signals = []
   private warnings
+  private fader: Fader
+  private actualVoice
 
-  public init (data, params) {
-    this.data = data
+  public init (params) {
     this.params = params
-
+    this.actualLevel = this.params.nextLevel
   }
 
   public create () {
     const centerX = this.game.world.centerX
     const centerY = this.game.world.centerY
+
+    this.game.add.sprite(0, 0, 'background_cabin')
 
     let hud = new HUD(this.game)
     this.frequency = hud.createFrequency()
@@ -38,23 +43,41 @@ export default class InterfaceState extends Phaser.State {
     let slider = hud.createSlider()
     this.warnings = hud.createWarnings()
     this.redAlert = hud.createRedAllert()
+    this.redAlert.events.onInputDown.add(this.loseOrWin, this)
 
     this.rotator = new Rotator(this.game, radioButton, slider)
     this.rotator.slider.events.onDragUpdate.add(this.updateFrequency, this)
 
     this.noise = this.game.add.audio('noise_radio', 1.0, true)
-    this.noise.volume = 0.5
+    this.noise.volume = 0.0
     this.noise.play()
 
     let factored = voiceFactory(this.game, this.frequency)
     this.voices = factored.voices
     this.signals = factored.signals
+    this.levels = factored.levels
+    console.log(this.voices)
+    this.game.add.text(100, 50, this.levels[this.actualLevel - 1], { font: '24px Arial', fill: '#000' })
 
     let pause = new Pause(this.game)
+
+    this.fader = new Fader(this.game)
+    this.fader.fadeOut(2200)
   }
 
   public update () {
     this.rotator.update()
+  }
+
+  private loseOrWin () {
+    console.log(this.actualVoice)
+    if (this.actualVoice.sound.key === this.levels[this.actualLevel - 1]) {
+      this.params.nextLevel += 1
+      this.game.state.start('interface', true, false, this.params)
+    } else {
+      this.game.camera.shake(0.001, 1000)
+    }
+
   }
 
   private updateFrequency () {
@@ -71,6 +94,7 @@ export default class InterfaceState extends Phaser.State {
         signalFound = true
         this.warnings.yellow.blink = true
         this.warnings.green.blink = false
+        this.actualVoice = voice
 
         if (!voice.sound.isPlaying) {
           voice.sound.volume = 0.2
