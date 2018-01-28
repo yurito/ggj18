@@ -1,6 +1,7 @@
 import 'phaser-ce'
 import backgrounds from '../schemes/backgrounds'
 import buttons from '../schemes/buttons'
+import hud from "../schemes/hud"
 import characters from '../schemes/characters'
 import sounds from '../schemes/sounds'
 import { tiles } from '../schemes/tiles'
@@ -24,6 +25,7 @@ export default class LoadingState extends Phaser.State {
     this.loadAssets(characters)
     this.loadAssets(sounds)
     this.loadAssets(tiles)
+    this.loadAssets(hud)
     this.setProgress()
   }
 
@@ -43,6 +45,9 @@ export default class LoadingState extends Phaser.State {
             break;
           case "atlasJSONHash":
             this.load.atlasJSONHash(assetKey, asset.source, asset.texture)
+            break;
+          case "atlasJSONArray":
+            this.load.atlasJSONArray(assetKey, asset.source, asset.texture)
             break;
           case "audio":
             this.load.audio(assetKey, asset.source)

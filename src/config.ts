@@ -1,9 +1,9 @@
 export default {
   loading: {
-    delay: 0
+    delay: 0.5
   },
   level: {
-    firstState: 'sandbox',
+    firstState: 'interface',
     nextLevel: 1
   },
   sound: {

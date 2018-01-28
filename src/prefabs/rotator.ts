@@ -33,7 +33,7 @@ export class Rotator {
       const midY = this.pivot.height / 2;
       this.slider.x = this.pivot.x;
       this.slider.y = this.pivot.y;
-      this.slider.pivot.y = midY + 30;
+      this.slider.pivot.y = midY - 23;
     }
   }
 
@@ -51,14 +51,15 @@ export class Rotator {
     let rotation = this.game.input.activePointer.position.angle(this.slider.position) - Phaser.Math.degToRad(90);
     this.slider.rotation = rotation
     this.pivot.rotation = rotation
+
   }
 
   public getAngle () {
-    if (this.pivot.angle < 0) {
-      let angleHalf = this.pivot.angle + 180
+    if (this.slider.angle < 0) {
+      let angleHalf = this.slider.angle + 180
       return angleHalf + 180
     } else {
-      return this.pivot.angle
+      return this.slider.angle
     }
   }
 

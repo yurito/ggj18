@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "botao-vermelho-apertado.png",
+	"frame": {"x":0,"y":0,"w":78,"h":72},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":78,"h":72},
+	"sourceSize": {"w":78,"h":72}
+},
+{
+	"filename": "botao-vermelho.png",
+	"frame": {"x":78,"y":0,"w":78,"h":72},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":78,"h":72},
+	"sourceSize": {"w":78,"h":72}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "texture.png",
+	"format": "RGBA8888",
+	"size": {"w":156,"h":72},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:175d98737f6f5a3b7386b2a21fa4fe83:b1cefdce804ff7c2b2fedeb54a351d04:88db1022cd6b660616541d2788fcd4f7$"
+}
+}

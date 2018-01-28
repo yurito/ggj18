@@ -37,16 +37,16 @@ export class Pause {
     this.soundOption.text += this.game.sound.mute ? ' Off' : ' On'
     this.soundOption.events.onInputDown.add(this.toggleSound, this)
 
-    let exitOption = this.game.add.text(w / 2, h / 2 - 0, 'Sair', { font: '24px Arial', fill: '#fff' })
-    exitOption.anchor.setTo(0.5, 0.5)
-    exitOption.inputEnabled = true
-    exitOption.events.onInputDown.add(this.exitGame, this)
+    // let exitOption = this.game.add.text(w / 2, h / 2 - 0, 'Sair', { font: '24px Arial', fill: '#fff' })
+    // exitOption.anchor.setTo(0.5, 0.5)
+    // exitOption.inputEnabled = true
+    // exitOption.events.onInputDown.add(this.exitGame, this)
 
     this.menu = this.game.add.group()
     this.menu.add(fade)
     this.menu.add(continueOption)
     this.menu.add(this.soundOption)
-    this.menu.add(exitOption)
+    // this.menu.add(exitOption)
     this.menu.alpha = 0
     this.menu.visible = false
     this.menu.fixedToCamera = true

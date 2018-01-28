@@ -1,6 +1,6 @@
 export default {
-  background_planet: {
+  background_cabin: {
     type: 'image',
-    source: 'assets/images/backgrounds/planeta-terra-wallpaper.jpg'
+    source: 'assets/images/backgrounds/cabine.png'
   }
 }
