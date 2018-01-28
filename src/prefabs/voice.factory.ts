@@ -6,6 +6,7 @@ export function voiceFactory (game: Phaser.Game, frequency, actualLevel) {
   let sounds = []
   let voices = []
   let signals = []
+  let signalObject
 
   let keys = [
     'music_survive',
@@ -30,10 +31,10 @@ export function voiceFactory (game: Phaser.Game, frequency, actualLevel) {
   signals.push(93)
   voices.push(new Voice(voiceLol, { major: 93, signal: 93.3 }))
 
-  let voiceRadio = game.add.audio(`voice_radio_level${actualLevel}`, 0.0)
-  let signalObject = frequency.createSignal(signals)
-  signals.push(signalObject.major)
-  voices.push(new Voice(voiceRadio, signalObject))
+  let voiceRadio = game.add.audio(`voice_radio_level${actualLevel}`, 1.0)
+  signals.push(92)
+  voices.push(new Voice(voiceRadio, { signal: 92.00, major: 92 }))
+  voiceRadio.play()
 
   let voiceLevel = game.add.audio(`voice_level${actualLevel}`, 0.0)
   signalObject = frequency.createSignal(signals)

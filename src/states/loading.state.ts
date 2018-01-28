@@ -16,10 +16,11 @@ export default class LoadingState extends Phaser.State {
   public init (nextState, params) {
     this.nextState = nextState
     this.params = params
-    this.game.stage.backgroundColor = 0xffffff
+    this.game.stage.backgroundColor = 0x000000
   }
 
   public create () {
+    this.showGameName()
     this.loadAssets(backgrounds)
     this.loadAssets(buttons)
     this.loadAssets(characters)
@@ -58,8 +59,13 @@ export default class LoadingState extends Phaser.State {
     }
   }
 
+  private showGameName () {
+    let gameName = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 60, 'Radio X3', { fill: '#ffffff', font: '36px Arial' })
+    gameName.anchor.set(0.5, 0)
+  }
+
   private setProgress () {
-    this.progressText = this.game.add.text(this.game.world.centerX - 30, this.game.world.centerY, '0%', { fill: '#000000' })
+    this.progressText = this.game.add.text(this.game.world.centerX - 30, this.game.world.centerY, '0%', { fill: '#ffffff' })
 
     this.game.time.events.add(Phaser.Timer.SECOND * config.loading.delay, () => {
       this.game.load.onFileComplete.add(this.loadProgress, this)

@@ -29,7 +29,8 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: 'assets', to: 'assets' },
-      { from: 'src/**/*.json', to: 'levels/', flatten: true }
+      { from: 'src/**/*.json', to: 'levels/', flatten: true },
+      { from: 'license.txt' }
     ])
   ],
   devServer: {

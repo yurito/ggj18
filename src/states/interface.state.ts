@@ -55,8 +55,6 @@ export default class InterfaceState extends Phaser.State {
     this.voices = factored.voices
     this.signals = factored.signals
     this.levels = factored.levels
-    console.log(this.voices)
-    this.game.add.text(100, 50, this.levels[this.actualLevel - 1], { font: '24px Arial', fill: '#000' })
 
     this.missSound = this.game.add.audio('sound_miss')
 
@@ -64,6 +62,9 @@ export default class InterfaceState extends Phaser.State {
 
     this.fader = new Fader(this.game)
     this.fader.fadeOut(2200)
+
+    console.log(this.voices)
+
   }
 
   public update () {

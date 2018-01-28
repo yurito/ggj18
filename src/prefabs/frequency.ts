@@ -24,7 +24,7 @@ export class Frequency {
 
   public update (angle) {
     let subfrequency = angle / 30
-    let frequency = Math.ceil(subfrequency)
+    let frequency = Math.floor(subfrequency)
     let subfrequencyAdjusted = subfrequency % 1
     let decimals = subfrequencyAdjusted.toString().substr(2, 2)
 
