@@ -42,8 +42,6 @@ export default class InterfaceState extends Phaser.State {
 
     this.redAlert.events.onInputDown.add(this.pressRedAlert, this)
 
-    this.game.time.events.loop(700, this.blinkWarning, this)
-
     this.rotator = new Rotator(this.game, radioButton, slider)
     this.rotator.slider.events.onDragUpdate.add(this.updateFrequency, this)
 
@@ -67,7 +65,7 @@ export default class InterfaceState extends Phaser.State {
   }
 
   private pressRedAlert () {
-    // this.redAlert.frame = this.redAlert.frame === 1 ? 0 : 1
+    this.redAlert.animations.play('pressed')
   }
 
   private updateFrequency () {
@@ -114,22 +112,6 @@ export default class InterfaceState extends Phaser.State {
         this.warnings.red.blink = false
       }
     })
-
-  }
-
-
-  private blinkWarning () {
-
-    for (let warningKey in this.warnings) {
-      if (this.warnings.hasOwnProperty(warningKey)) {
-        let warning = this.warnings[warningKey]
-        if (warning.blink && warning.animations.currentAnim !== 'blink') {
-          warning.animations.play('blink')
-        } else {
-          warning.animations.stop(null, true);
-        }
-      }
-    }
 
   }
 

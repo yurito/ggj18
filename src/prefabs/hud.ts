@@ -6,6 +6,7 @@ export class HUD {
 
   private game: Phaser.Game
   private panel: Phaser.Sprite
+  private warnings
 
   constructor(game) {
     this.game = game
@@ -32,11 +33,32 @@ export class HUD {
     yellow.animations.add('blink', ['botao-amarelinho', 'botao-amarelinho-brilhando'], 2)
     let red = this.game.add.sprite(this.panel.x + 200, this.panel.y + 95, 'panel_sprites', 'botao-vermelhinho')
     red.animations.add('blink', ['botao-vermelhinho', 'botao-vermelhinho-brilhando'], 2)
-    return { green, yellow, red }
+
+    this.warnings = { green, yellow, red }
+    this.game.time.events.loop(700, this.blinkWarning, this)
+    return this.warnings
   }
 
   public createRedAllert () {
-    return this.game.add.sprite(this.panel.x + 20, this.panel.y + 15, 'panel_sprites', 'botao-vermelho')
+    let button = this.game.add.sprite(this.panel.x + 20, this.panel.y + 15, 'panel_sprites', 'botao-vermelho')
+    button.animations.add('pressed', ['botao-vermelho-apertado'])
+    button.animations.add('unpressed', ['botao-vermelho'])
+    return button
+  }
+
+  private blinkWarning () {
+
+    for (let warningKey in this.warnings) {
+      if (this.warnings.hasOwnProperty(warningKey)) {
+        let warning = this.warnings[warningKey]
+        if (warning.blink && warning.animations.currentAnim !== 'blink') {
+          warning.animations.play('blink')
+        } else {
+          warning.animations.stop(null, true);
+        }
+      }
+    }
+
   }
 
 }
